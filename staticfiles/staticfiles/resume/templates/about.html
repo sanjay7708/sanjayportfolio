@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content1 %}
+<div class="row my-5">
+ <div class="col-4 d-flex justify-content-center align-items-center">
+    <img src="{% static 'images/20241020_160250.jpg' %}" alt="image" class="about_image">
+ </div>
+
+ <div class="col-7 text-left text-light">
+     <h2> Hello !</h2>
+     <p class="fs-5">
+        I am an enthusiastic software developer with a Master of Computer Applications (MCA) degree, earned in 2023. My passion lies in building efficient, scalable, and user-friendly web applications.
+      </p>
+      <p class="fs-5">
+        I specialize in backend development with strong expertise in Python, Django, and MySQL. Additionally, I am skilled in crafting APIs using the Django REST Framework and have hands-on experience working with foundational Data Structures and Algorithms. My current learning journey includes exploring JavaScript DOM and front-end technologies to become a well-rounded full-stack developer.
+      </p>
+
+ </div>
+</div>
+
+
+<div class="row my-2">
+    <h2 class="text-center" style="color:#4fffb0"> My Tech Stack</h2>
+
+    <div class="d-flex justify-content-around align-items-center">
+      <img
+          src="{% static 'images/html.png' %}"
+          width="70"
+          height="70"
+          alt="HTML Logo"
+          class="img-fluid"
+      />
+
+      <img
+          src="{% static 'images/css.png' %}"
+          width="70"
+          height="70"
+          alt="CSS Logo"
+          class="img-fluid"
+      />
+
+      <img
+          src="{% static 'images/js.png' %}"
+          width="70"
+          height="70"
+          alt="JavaScript Logo"
+          class="img-fluid"
+      />
+
+      <img
+          src="{% static 'images/python.jpg' %}"
+          width="60"
+          height="60"
+          alt="Python Logo"
+          class="img-fluid"
+      />
+
+
+      <img
+          src="{% static 'images/download.png' %}"
+          width="70"
+          height="70"
+          alt="Django Logo"
+          class="img-fluid"
+      />
+      <img
+      src="{% static 'images/mysql.png' %}"
+      width="70"
+      height="70"
+      alt="Django Logo"
+      class="img-fluid"
+  />
+  </div>
+
+</div>
+
+{% endblock content1 %}

@@ -1,22 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.staticfiles.storage import staticfiles_storage
-
+from . models import ContactModel
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 def about(request):
     return render(request,'about.html')
+
 def contact_view(request):
     error_messages = []
     success_message = None
-
+    obj=ContactModel()
     if request.method == "POST":
         # Extract data from the form
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
-        message = request.POST.get('msg', '').strip()
+        message = request.POST.get('message', '').strip()
+
+    
 
         # Validate data
         if not name:
@@ -36,10 +39,16 @@ def contact_view(request):
         if not error_messages:
             try:
                 # Save validated data to the database
-                
+                obj.name=name
+                obj.email=email
+                obj.phone_no=phone
+                obj.message=message
+                obj.save()
                 success_message = "Your message has been submitted successfully!"
+                
             except Exception as e:
                 error_messages.append(f"An error occurred: {str(e)}")
+        
 
     return render(request, 'contact.html', {
         'error_messages': error_messages,
@@ -49,14 +58,8 @@ def contact_view(request):
 
 def projects (request):
     projects_show=[
-        {
-            'title': 'Rasoi Connect',
-            'path': 'images/rasoi_connect.PNG',
-        },
-        {
-            'title': 'Ecommerce',
-            'path': 'images/ecommerce.PNG',
-        },
+        
+        
 
         {
             'title': 'Timetable Scheduler',
@@ -66,23 +69,11 @@ def projects (request):
             'title': 'CRUD',
             'path': 'images/CRUD.PNG',
         },
+        {
+            'title':'Chat Application',
+            'path':'images/chatapp.jpg'
+        }
 
-         {
-            'title': 'Photo Uploader',
-            'path': 'images/photo_uploader.PNG',
-        },
-          {
-            'title': 'To do list',
-            'path': 'images/todolist.PNG',
-        },
-         {
-            'title': 'Portfolio',
-            'path': 'images/portfolio.PNG',
-        },
-                  {
-            'title': 'Labour Hiring',
-            'path': 'images\labour_hiring.PNG',
-        },
 
     ]
     return render (request,"projects.html",{"projects_show": projects_show})
